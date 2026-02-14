@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ベーススタイル */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3 {
+    @apply font-serif;
+  }
+}
+
+/* コンポーネントスタイル */
+@layer components {
+  /* プライマリボタン */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3
+           bg-accent text-white font-medium rounded-lg
+           hover:bg-orange-800 transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  }
+
+  /* セカンダリボタン */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3
+           border-2 border-accent text-accent font-medium rounded-lg
+           hover:bg-accent hover:text-white transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  }
+
+  /* ティールボタン */
+  .btn-teal {
+    @apply inline-flex items-center justify-center px-6 py-3
+           bg-teal text-white font-medium rounded-lg
+           hover:bg-emerald-800 transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2;
+  }
+
+  /* セクションコンテナ */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* セクションタイトル */
+  .section-title {
+    @apply text-3xl sm:text-4xl font-serif font-bold text-ink mb-4;
+  }
+
+  /* セクションサブタイトル */
+  .section-subtitle {
+    @apply text-lg text-stone-600 mb-8;
+  }
+}
