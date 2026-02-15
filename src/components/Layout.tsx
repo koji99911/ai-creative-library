@@ -102,9 +102,18 @@ export default function Layout() {
                             <h3 className="text-white text-lg font-serif font-bold mb-3">
                                 AI Creative Library
                             </h3>
-                            <p className="text-sm leading-relaxed">
+                            <p className="text-sm leading-relaxed mb-2">
                                 AIを活用した画像・動画テンプレートで、<br />
                                 あなたのビジネスを彩ります。
+                            </p>
+                            <p className="text-xs text-stone-400 mt-3">
+                                AIみらい会 | 岡山県<br />
+                                <a
+                                    href="https://gallery.aimiraikai-okayama.com"
+                                    className="hover:text-white transition-colors"
+                                >
+                                    gallery.aimiraikai-okayama.com
+                                </a>
                             </p>
                         </div>
 
@@ -142,7 +151,7 @@ export default function Layout() {
                     </div>
 
                     <div className="border-t border-stone-700 mt-8 pt-8 text-center text-xs text-stone-500">
-                        © 2025 AI Creative Library. All rights reserved.
+                        © 2024-2025 AI Creative Library（AIみらい会）. All rights reserved.
                     </div>
                 </div>
             </footer>

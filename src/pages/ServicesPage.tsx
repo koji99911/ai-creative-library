@@ -1,7 +1,11 @@
+import { usePageTitle } from '../hooks/usePageTitle';
+
 /**
  * サービス・料金ページ（プレースホルダー）
  */
 export default function ServicesPage() {
+    usePageTitle('料金・サービス | 岡山のAI画像・動画制作');
+
     return (
         <div className="section-container py-16">
             <h1 className="section-title">サービス・料金</h1>

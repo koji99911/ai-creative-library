@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { videoItems, categoryLabels, type GalleryCategory } from '../data/galleryData';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 /** 動画ギャラリーで使用するカテゴリフィルター */
 const VIDEO_CATEGORIES: { key: 'all' | GalleryCategory; label: string }[] = [
@@ -21,6 +22,7 @@ function formatDuration(seconds: number): string {
  * カテゴリフィルター + カードグリッド（再生ボタン + 尺表示つき）
  */
 export default function VideoGalleryPage() {
+    usePageTitle('AI動画テンプレート | 岡山の店舗向けプロモーション動画制作');
     const [activeCategory, setActiveCategory] = useState<'all' | GalleryCategory>('all');
 
     const filteredItems = useMemo(() => {
@@ -46,8 +48,8 @@ export default function VideoGalleryPage() {
                             key={cat.key}
                             onClick={() => setActiveCategory(cat.key)}
                             className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${activeCategory === cat.key
-                                    ? 'bg-accent text-white shadow-md'
-                                    : 'bg-white text-stone-600 border border-stone-300 hover:border-accent hover:text-accent'
+                                ? 'bg-accent text-white shadow-md'
+                                : 'bg-white text-stone-600 border border-stone-300 hover:border-accent hover:text-accent'
                                 }`}
                         >
                             {cat.label}

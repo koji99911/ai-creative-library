@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { imageItems, categoryLabels, type GalleryCategory } from '../data/galleryData';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 /** 画像ギャラリーで使用するカテゴリフィルター */
 const IMAGE_CATEGORIES: { key: 'all' | GalleryCategory; label: string }[] = [
@@ -16,6 +17,7 @@ const IMAGE_CATEGORIES: { key: 'all' | GalleryCategory; label: string }[] = [
  * カテゴリフィルター + カードグリッド表示
  */
 export default function ImageGalleryPage() {
+    usePageTitle('AI画像テンプレート | 岡山の店舗向けSNS画像・バナー制作');
     const [activeCategory, setActiveCategory] = useState<'all' | GalleryCategory>('all');
 
     const filteredItems = useMemo(() => {
@@ -41,8 +43,8 @@ export default function ImageGalleryPage() {
                             key={cat.key}
                             onClick={() => setActiveCategory(cat.key)}
                             className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${activeCategory === cat.key
-                                    ? 'bg-accent text-white shadow-md'
-                                    : 'bg-white text-stone-600 border border-stone-300 hover:border-accent hover:text-accent'
+                                ? 'bg-accent text-white shadow-md'
+                                : 'bg-white text-stone-600 border border-stone-300 hover:border-accent hover:text-accent'
                                 }`}
                         >
                             {cat.label}

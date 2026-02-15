@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { imageItems, videoItems, categoryLabels } from '../data/galleryData';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 /** 秒数をmm:ss形式に変換 */
 function formatDuration(seconds: number): string {
@@ -13,6 +14,8 @@ function formatDuration(seconds: number): string {
  * ヒーローセクション + サービス概要 + ハイライト作品
  */
 export default function HomePage() {
+    usePageTitle('AI画像・動画制作 | 岡山の個人事業主・店舗向け | AI Creative Library');
+
     // ハイライト: 画像3点 + 動画3点
     const highlightImages = imageItems.slice(0, 3);
     const highlightVideos = videoItems.slice(0, 3);
@@ -29,15 +32,14 @@ export default function HomePage() {
                 <div className="section-container py-20 sm:py-28 lg:py-36">
                     <div className="max-w-3xl mx-auto text-center">
                         <p className="text-accent font-medium text-sm sm:text-base mb-4 tracking-wider">
-                            AI × DESIGN TEMPLATES
+                            AI × DESIGN TEMPLATES for OKAYAMA
                         </p>
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-ink leading-tight mb-6">
-                            AIで、あなたの<br />
-                            ビジネスを<span className="text-accent">彩る</span>
+                            岡山の店舗・個人事業主の<br />ための<span className="text-accent">AIクリエイティブ</span>
                         </h1>
                         <p className="text-lg sm:text-xl text-stone-600 leading-relaxed mb-10 max-w-2xl mx-auto">
-                            プロ品質のデザインテンプレートを、あなたのブランドに合わせてカスタマイズ。
-                            画像・動画のサンプルをご覧いただき、お気軽にご相談ください。
+                            岡山県内の美容サロン・飲食店・個人事業主に選ばれています。
+                            プロ品質のデザインテンプレートを、従来の1/10のコストでご提供します。
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link to="/gallery/images" className="btn-primary text-base px-8 py-4">
