@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
-import { videoItems, categoryLabels, type GalleryCategory } from '../data/galleryData';
+import { videoItems, categoryLabels, type GalleryCategory, type GalleryItem } from '../data/galleryData';
 import { usePageTitle } from '../hooks/usePageTitle';
+import VideoPreviewModal from '../components/VideoPreviewModal';
 
 /** 動画ギャラリーで使用するカテゴリフィルター */
 const VIDEO_CATEGORIES: { key: 'all' | GalleryCategory; label: string }[] = [
@@ -20,10 +21,12 @@ function formatDuration(seconds: number): string {
 /**
  * 動画ギャラリーページ
  * カテゴリフィルター + カードグリッド（再生ボタン + 尺表示つき）
+ * カードクリックで Remotion Player プレビューモーダル表示
  */
 export default function VideoGalleryPage() {
     usePageTitle('AI動画テンプレート | 岡山の店舗向けプロモーション動画制作');
     const [activeCategory, setActiveCategory] = useState<'all' | GalleryCategory>('all');
+    const [previewItem, setPreviewItem] = useState<GalleryItem | null>(null);
 
     const filteredItems = useMemo(() => {
         if (activeCategory === 'all') return videoItems;
@@ -64,7 +67,8 @@ export default function VideoGalleryPage() {
                             key={item.id}
                             className="group bg-white rounded-2xl overflow-hidden border border-stone-200 
                          shadow-sm hover:shadow-xl transition-all duration-300 
-                         hover:-translate-y-2"
+                         hover:-translate-y-2 cursor-pointer"
+                            onClick={() => setPreviewItem(item)}
                         >
                             {/* サムネイル + 再生ボタン */}
                             <div className="relative aspect-video overflow-hidden">
@@ -135,8 +139,14 @@ export default function VideoGalleryPage() {
                                 </div>
 
                                 {/* CTAボタン */}
-                                <button className="w-full btn-primary text-sm">
-                                    カスタマイズする
+                                <button
+                                    className="w-full btn-primary text-sm"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setPreviewItem(item);
+                                    }}
+                                >
+                                    プレビュー再生
                                 </button>
                             </div>
                         </article>
@@ -150,6 +160,14 @@ export default function VideoGalleryPage() {
                     </div>
                 )}
             </div>
+
+            {/* プレビューモーダル */}
+            {previewItem && (
+                <VideoPreviewModal
+                    item={previewItem}
+                    onClose={() => setPreviewItem(null)}
+                />
+            )}
         </div>
     );
 }

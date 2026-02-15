@@ -9,12 +9,17 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "remotion:studio": "npx remotion studio src/remotion/index.ts",
+    "render:video": "npx remotion render src/remotion/index.ts SalonIntro --props=./video-props.json out/video.mp4"
   },
   "dependencies": {
+    "@remotion/cli": "^4.0.422",
+    "@remotion/player": "^4.0.422",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.13.0"
+    "react-router-dom": "^7.13.0",
+    "remotion": "^4.0.422"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
