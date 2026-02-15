@@ -11,6 +11,7 @@ const IMAGE_CATEGORIES: { key: 'all' | GalleryCategory; label: string }[] = [
     { key: 'business', label: 'ビジネス' },
     { key: 'info', label: 'インフォグラフィック' },
     { key: 'bousai', label: '防災' },
+    { key: 'lp', label: 'LP制作' },
 ];
 
 /**

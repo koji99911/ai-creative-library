@@ -10,6 +10,7 @@ export type GalleryCategory =
     | 'business'  // ビジネス
     | 'info'      // インフォグラフィック
     | 'bousai'    // 防災
+    | 'lp'        // LP制作
     | 'promo'     // プロモーション（動画）
     | 'product'   // 商品紹介（動画）
     | 'campaign'; // キャンペーン（動画）
@@ -49,6 +50,7 @@ export const categoryLabels: Record<GalleryCategory, string> = {
     business: 'ビジネス',
     info: 'インフォグラフィック',
     bousai: '防災',
+    lp: 'LP制作',
     promo: 'プロモーション',
     product: '商品紹介',
     campaign: 'キャンペーン',
@@ -134,6 +136,39 @@ export const imageItems: GalleryItem[] = [
         imagePath: assetPath('/images/gallery/bousai-checklist.png'),
         type: 'image',
         customizable: ['テキスト', '色', 'ロゴ'],
+    },
+    {
+        id: 'img-007',
+        title: '美容サロンLP',
+        description:
+            'ピンクとゴールドを基調とした高級感のある美容サロン向けランディングページ。予約導線・メニュー・ビフォーアフター・お客様の声セクション付き。',
+        category: 'lp',
+        tags: ['LP', '美容サロン', 'ランディングページ'],
+        imagePath: assetPath('/images/gallery/lp-beauty-salon.png'),
+        type: 'image',
+        customizable: ['テキスト', '画像', '色', 'ロゴ'],
+    },
+    {
+        id: 'img-008',
+        title: 'パーソナルトレーナーLP',
+        description:
+            'ネイビーとオレンジのスポーティなパーソナルトレーニングジム向けLP。料金プラン・トレーナー紹介・変化事例セクション付き。',
+        category: 'lp',
+        tags: ['LP', 'パーソナルトレーナー', 'フィットネス'],
+        imagePath: assetPath('/images/gallery/lp-personal-trainer.png'),
+        type: 'image',
+        customizable: ['テキスト', '画像', '色', 'ロゴ'],
+    },
+    {
+        id: 'img-009',
+        title: 'カフェLP',
+        description:
+            'ベージュとグリーンのナチュラルなカフェ向けランディングページ。季節メニュー・ストーリー・アクセス・予約セクション付き。',
+        category: 'lp',
+        tags: ['LP', 'カフェ', '飲食店'],
+        imagePath: assetPath('/images/gallery/lp-cafe.png'),
+        type: 'image',
+        customizable: ['テキスト', '画像', '色', 'ロゴ'],
     },
 ];
 
