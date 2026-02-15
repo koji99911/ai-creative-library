@@ -54,6 +54,16 @@ export const categoryLabels: Record<GalleryCategory, string> = {
     campaign: 'キャンペーン',
 };
 
+/**
+ * publicディレクトリ内のアセットパスにViteのベースURLを付与する
+ * ローカル開発時は '/'、GitHub Pages時は '/ai-creative-library/' が自動適用される
+ */
+function assetPath(path: string): string {
+    const base = import.meta.env.BASE_URL;
+    // baseは末尾に'/'を含み、pathは先頭に'/'を含むので重複を除去
+    return `${base}${path.startsWith('/') ? path.slice(1) : path}`;
+}
+
 // ==========================================================
 // 画像データ
 // ==========================================================
@@ -66,7 +76,7 @@ export const imageItems: GalleryItem[] = [
             'パステルピンクと桜モチーフの春限定キャンペーン用SNS投稿テンプレート。Instagram・X対応の正方形デザイン。',
         category: 'beauty',
         tags: ['SNS投稿', '春', 'キャンペーン', 'Instagram'],
-        imagePath: '/images/gallery/salon-spring-campaign.png',
+        imagePath: assetPath('/images/gallery/salon-spring-campaign.png'),
         type: 'image',
         customizable: ['テキスト', '画像', '色', 'ロゴ'],
     },
@@ -77,7 +87,7 @@ export const imageItems: GalleryItem[] = [
             '温かみのあるカフェ風デザインの新メニュー告知テンプレート。季節限定メニューのアピールに最適。',
         category: 'food',
         tags: ['SNS投稿', 'カフェ', '新メニュー', 'Instagram'],
-        imagePath: '/images/gallery/cafe-new-menu.png',
+        imagePath: assetPath('/images/gallery/cafe-new-menu.png'),
         type: 'image',
         customizable: ['テキスト', '画像', '色', 'ロゴ'],
     },
@@ -88,7 +98,7 @@ export const imageItems: GalleryItem[] = [
             'コンサルタント・士業向けのサービス紹介インフォグラフィック。3ステップで分かりやすくサービスの流れを解説。',
         category: 'business',
         tags: ['インフォグラフィック', 'サービス紹介', 'コンサルタント'],
-        imagePath: '/images/gallery/business-service-flow.png',
+        imagePath: assetPath('/images/gallery/business-service-flow.png'),
         type: 'image',
         customizable: ['テキスト', '色', 'ロゴ'],
     },
@@ -99,7 +109,7 @@ export const imageItems: GalleryItem[] = [
             '商品やサービスの比較を一目で伝えるインフォグラフィック。「選ばれる5つの理由」形式で顧客の意思決定をサポート。',
         category: 'info',
         tags: ['比較表', 'EC', 'インフォグラフィック'],
-        imagePath: '/images/gallery/product-comparison-chart.png',
+        imagePath: assetPath('/images/gallery/product-comparison-chart.png'),
         type: 'image',
         customizable: ['テキスト', '画像', '色'],
     },
@@ -110,7 +120,7 @@ export const imageItems: GalleryItem[] = [
             'ラベンダーとゴールドのエレガントな名刺テンプレート。セラピスト・エステティシャン・ヒーラー向け。',
         category: 'beauty',
         tags: ['名刺', 'セラピスト', 'エレガント'],
-        imagePath: '/images/gallery/therapist-card-design.png',
+        imagePath: assetPath('/images/gallery/therapist-card-design.png'),
         type: 'image',
         customizable: ['テキスト', '色', 'ロゴ'],
     },
@@ -121,7 +131,7 @@ export const imageItems: GalleryItem[] = [
             'カテゴリ分けされた備蓄品チェックリスト。自治会・町内会の配布物やSNS投稿に活用できるデザイン。',
         category: 'bousai',
         tags: ['防災', 'チェックリスト', '自治会', 'インフォグラフィック'],
-        imagePath: '/images/gallery/bousai-checklist.png',
+        imagePath: assetPath('/images/gallery/bousai-checklist.png'),
         type: 'image',
         customizable: ['テキスト', '色', 'ロゴ'],
     },
@@ -139,7 +149,7 @@ export const videoItems: GalleryItem[] = [
             'サロンの雰囲気やメニューを30秒で伝えるプロモーション動画テンプレート。SNSやWebサイト掲載に最適。',
         category: 'promo',
         tags: ['プロモーション', '美容サロン', 'SNS動画'],
-        imagePath: '/images/gallery/salon-spring-campaign.png',
+        imagePath: assetPath('/images/gallery/salon-spring-campaign.png'),
         type: 'video',
         duration: 30,
         customizable: ['テキスト', '画像', '色', 'ロゴ', 'BGM'],
@@ -151,7 +161,7 @@ export const videoItems: GalleryItem[] = [
             '商品の魅力を45秒で伝えるプロモーション動画テンプレート。EC商品やハンドメイド作品の紹介に。',
         category: 'product',
         tags: ['商品紹介', 'EC', 'プロモーション'],
-        imagePath: '/images/gallery/product-comparison-chart.png',
+        imagePath: assetPath('/images/gallery/product-comparison-chart.png'),
         type: 'video',
         duration: 45,
         customizable: ['テキスト', '画像', '色', 'ロゴ', 'BGM', 'ナレーション'],
@@ -163,7 +173,7 @@ export const videoItems: GalleryItem[] = [
             '15秒で印象を残すSNSショート動画テンプレート。Instagram Reels・TikTok・YouTubeショート対応。',
         category: 'campaign',
         tags: ['ショート動画', 'SNS', 'キャンペーン', 'Reels'],
-        imagePath: '/images/gallery/cafe-new-menu.png',
+        imagePath: assetPath('/images/gallery/cafe-new-menu.png'),
         type: 'video',
         duration: 15,
         customizable: ['テキスト', '画像', '色', 'BGM', 'アニメーション'],
@@ -175,7 +185,7 @@ export const videoItems: GalleryItem[] = [
             '施術前後の変化を30秒で魅せるビフォーアフター動画テンプレート。美容・リフォーム・クリーニング等に。',
         category: 'promo',
         tags: ['ビフォーアフター', '美容', '施術', 'プロモーション'],
-        imagePath: '/images/gallery/therapist-card-design.png',
+        imagePath: assetPath('/images/gallery/therapist-card-design.png'),
         type: 'video',
         duration: 30,
         customizable: ['テキスト', '画像', '色', 'ロゴ', 'BGM', 'アニメーション'],
