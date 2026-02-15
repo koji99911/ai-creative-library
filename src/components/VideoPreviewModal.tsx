@@ -5,6 +5,9 @@
 
 import { Player } from '@remotion/player';
 import { SalonIntroVideo, defaultSalonIntroProps } from '../remotion/templates/SalonIntroVideo';
+import { ProductPromoVideo, defaultProductPromoProps } from '../remotion/templates/ProductPromoVideo';
+import { SNSShortVideo, defaultSNSShortProps } from '../remotion/templates/SNSShortVideo';
+import { BeforeAfterVideo, defaultBeforeAfterProps } from '../remotion/templates/BeforeAfterVideo';
 import type { GalleryItem } from '../data/galleryData';
 
 interface VideoPreviewModalProps {
@@ -14,13 +17,38 @@ interface VideoPreviewModalProps {
 
 /** テンプレートIDからRemotionコンポーネントとpropsを解決 */
 function resolveTemplate(itemId: string) {
-    // 現時点では vid-001 (美容サロン紹介) のみ対応
-    // プロンプト10 で追加テンプレートを登録予定
     switch (itemId) {
         case 'vid-001':
             return {
                 component: SalonIntroVideo,
                 props: defaultSalonIntroProps,
+                durationInFrames: 30 * 30,
+                fps: 30,
+                width: 1080,
+                height: 1080,
+            };
+        case 'vid-002':
+            return {
+                component: ProductPromoVideo,
+                props: defaultProductPromoProps,
+                durationInFrames: 45 * 30,
+                fps: 30,
+                width: 1080,
+                height: 1080,
+            };
+        case 'vid-003':
+            return {
+                component: SNSShortVideo,
+                props: defaultSNSShortProps,
+                durationInFrames: 15 * 30,
+                fps: 30,
+                width: 1080,
+                height: 1920,
+            };
+        case 'vid-004':
+            return {
+                component: BeforeAfterVideo,
+                props: defaultBeforeAfterProps,
                 durationInFrames: 30 * 30,
                 fps: 30,
                 width: 1080,
@@ -34,13 +62,16 @@ function resolveTemplate(itemId: string) {
 export default function VideoPreviewModal({ item, onClose }: VideoPreviewModalProps) {
     const template = resolveTemplate(item.id);
 
+    // SNSショートは縦型プレビュー
+    const isVertical = template && template.height > template.width;
+
     return (
         <div
             className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/60 backdrop-blur-sm"
             onClick={onClose}
         >
             <div
-                className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 overflow-hidden"
+                className={`relative bg-white rounded-2xl shadow-2xl mx-4 overflow-hidden ${isVertical ? 'max-w-sm w-full' : 'max-w-2xl w-full'}`}
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* ヘッダー */}
@@ -60,7 +91,7 @@ export default function VideoPreviewModal({ item, onClose }: VideoPreviewModalPr
                 {/* プレビューエリア */}
                 <div className="p-4">
                     {template ? (
-                        <div className="aspect-square bg-stone-100 rounded-lg overflow-hidden">
+                        <div className={`bg-stone-100 rounded-lg overflow-hidden ${isVertical ? 'aspect-[9/16]' : 'aspect-square'}`}>
                             <Player
                                 component={template.component}
                                 inputProps={template.props}
