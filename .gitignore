@@ -26,3 +26,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Client orders (actual order data)
+client-orders/orders/*
+!client-orders/orders/.gitkeep
