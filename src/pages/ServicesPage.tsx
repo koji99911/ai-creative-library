@@ -235,19 +235,19 @@ export default function ServicesPage() {
 
             {/* CTA */}
             <section className="section-container">
-                <div className="bg-gradient-to-r from-teal to-emerald-700 rounded-3xl p-10 sm:p-16 text-center text-white">
-                    <h2 className="text-3xl sm:text-4xl font-serif font-bold mb-4">
+                <div className="bg-[#F5EDE4] rounded-3xl p-10 sm:p-16 text-center">
+                    <h2 className="text-3xl sm:text-4xl font-serif font-bold text-ink mb-4">
                         まずは無料で<br className="sm:hidden" />ご相談ください
                     </h2>
-                    <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+                    <p className="text-stone-600 text-lg mb-8 max-w-xl mx-auto">
                         「こんなものが作れる？」「予算はどれくらい？」など<br className="hidden sm:block" />
                         どんなご質問でもお気軽にどうぞ。
                     </p>
                     <Link
                         to="/contact"
-                        className="inline-flex items-center justify-center px-8 py-4 bg-white text-teal font-bold rounded-lg hover:bg-stone-100 transition-colors duration-200 text-base"
+                        className="inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-bold rounded-lg hover:bg-orange-800 transition-colors duration-200 text-base shadow-md"
                     >
-                        お問い合わせフォームへ
+                        無料で相談する
                     </Link>
                 </div>
             </section>

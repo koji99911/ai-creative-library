@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { imageItems, videoItems, categoryLabels } from '../data/galleryData';
+import { imageItems, videoItems, lpItems, categoryLabels } from '../data/galleryData';
 import { usePageTitle } from '../hooks/usePageTitle';
 
 /** 秒数をmm:ss形式に変換 */
@@ -24,6 +24,7 @@ export default function HomePage() {
 
     const highlightImages = imageItems.slice(0, 3);
     const highlightVideos = videoItems.slice(0, 3);
+    const highlightLPs = lpItems.slice(0, 3);
 
     return (
         <>
@@ -80,25 +81,26 @@ export default function HomePage() {
                             <p className="text-3xl sm:text-4xl font-serif font-bold text-ink mb-1">50<span className="text-accent">+</span></p>
                             <p className="text-sm text-stone-500 font-medium">制作実績テンプレート</p>
                         </div>
-                        {/* スピード */}
+                        {/* 丁寧なヒアリング */}
                         <div className="text-center p-6">
                             <div className="w-14 h-14 mx-auto mb-4 bg-teal/10 rounded-2xl flex items-center justify-center">
                                 <svg className="w-7 h-7 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                                 </svg>
                             </div>
-                            <p className="text-3xl sm:text-4xl font-serif font-bold text-ink mb-1">最短<span className="text-teal">翌日</span></p>
-                            <p className="text-sm text-stone-500 font-medium">対応スピード納品</p>
+                            <p className="text-2xl sm:text-3xl font-serif font-bold text-ink mb-1">丁寧な<span className="text-teal">ヒアリング</span></p>
+                            <p className="text-sm text-stone-500 font-medium">お客様の想いを形に</p>
                         </div>
-                        {/* 修正 */}
+                        {/* 岡山密着対応 */}
                         <div className="text-center p-6">
                             <div className="w-14 h-14 mx-auto mb-4 bg-violet/10 rounded-2xl flex items-center justify-center">
                                 <svg className="w-7 h-7 text-violet" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
                             </div>
-                            <p className="text-3xl sm:text-4xl font-serif font-bold text-ink mb-1">何度でも<span className="text-violet">OK</span></p>
-                            <p className="text-sm text-stone-500 font-medium">修正回数</p>
+                            <p className="text-2xl sm:text-3xl font-serif font-bold text-ink mb-1">岡山<span className="text-violet">密着</span>対応</p>
+                            <p className="text-sm text-stone-500 font-medium">地域に寄り添うサービス</p>
                         </div>
                     </div>
                 </div>
@@ -234,7 +236,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="max-w-4xl mx-auto">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0 items-center">
+                        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                             {/* Before */}
                             <div className="relative">
                                 <div className="absolute -top-3 left-4 z-10">
@@ -250,17 +252,17 @@ export default function HomePage() {
                                 <p className="text-center text-xs text-stone-400 mt-2">自分で作った素材</p>
                             </div>
 
-                            {/* 中央の矢印（モバイルは下向き、デスクトップは右向き） */}
-                            <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-20">
-                                <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center shadow-lg">
-                                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            {/* 中央の矢印（デスクトップ: 横向き、モバイル: 縦向き） */}
+                            <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                                <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-accent">
+                                    <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                     </svg>
                                 </div>
                             </div>
-                            <div className="flex md:hidden justify-center -my-2 z-20 relative">
-                                <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg">
-                                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <div className="flex md:hidden justify-center -mt-4 -mb-4 z-20 relative">
+                                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-accent">
+                                    <svg className="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 13l-5 5m0 0l-5-5m5 5V6" />
                                     </svg>
                                 </div>
@@ -460,21 +462,73 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ===== CTA セクション ===== */}
+            {/* ===== LPハイライト ===== */}
             <section className="py-16 sm:py-24 bg-white">
                 <div className="section-container">
-                    <div className="bg-gradient-to-r from-accent to-orange-700 rounded-3xl p-10 sm:p-16 text-center text-white">
-                        <h2 className="text-3xl sm:text-4xl font-serif font-bold mb-4">
+                    <div className="flex items-end justify-between mb-10">
+                        <div>
+                            <h2 className="section-title mb-2">LPテンプレート</h2>
+                            <p className="text-stone-500">業種に合わせたランディングページ</p>
+                        </div>
+                        <Link
+                            to="/gallery/lp"
+                            className="hidden sm:inline-flex items-center text-accent font-medium hover:underline"
+                        >
+                            すべて見る
+                            <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </Link>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {highlightLPs.map((item) => (
+                            <Link
+                                key={item.id}
+                                to="/gallery/lp"
+                                className="group bg-white rounded-2xl overflow-hidden border border-stone-200 
+                           shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                            >
+                                <div className="relative aspect-square overflow-hidden">
+                                    <img
+                                        src={item.imagePath}
+                                        alt={item.title}
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                </div>
+                                <div className="p-4">
+                                    <span className="text-xs text-teal font-medium">
+                                        {categoryLabels[item.category]}
+                                    </span>
+                                    <h3 className="font-serif font-bold text-base mt-1">{item.title}</h3>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+
+                    <div className="sm:hidden text-center mt-6">
+                        <Link to="/gallery/lp" className="btn-secondary text-sm">
+                            LPギャラリーをすべて見る →
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* ===== CTA セクション ===== */}
+            <section className="py-16 sm:py-24">
+                <div className="section-container">
+                    <div className="bg-[#F5EDE4] rounded-3xl p-10 sm:p-16 text-center">
+                        <h2 className="text-3xl sm:text-4xl font-serif font-bold text-ink mb-4">
                             あなたのビジネスに合わせた<br className="sm:hidden" />
                             デザインを
                         </h2>
-                        <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+                        <p className="text-stone-600 text-lg mb-8 max-w-xl mx-auto">
                             テンプレートをベースに、ロゴ・テキスト・色をカスタマイズ。<br className="hidden sm:block" />
                             まずはお気軽にご相談ください。
                         </p>
                         <Link
                             to="/contact"
-                            className="inline-flex items-center justify-center px-8 py-4 bg-white text-accent font-bold rounded-lg hover:bg-stone-100 transition-colors duration-200 text-base"
+                            className="inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-bold rounded-lg hover:bg-orange-800 transition-colors duration-200 text-base shadow-md"
                         >
                             無料で相談する
                         </Link>

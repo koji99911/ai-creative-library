@@ -1,22 +1,21 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { imageItems, categoryLabels, type GalleryCategory, type GalleryItem } from '../data/galleryData';
+import { lpItems, categoryLabels, type GalleryCategory, type GalleryItem } from '../data/galleryData';
 import { usePageTitle } from '../hooks/usePageTitle';
 
-/** 画像ギャラリーで使用するカテゴリフィルター */
-const IMAGE_CATEGORIES: { key: 'all' | GalleryCategory; label: string }[] = [
+/** LPギャラリーで使用するカテゴリフィルター */
+const LP_CATEGORIES: { key: 'all' | GalleryCategory; label: string }[] = [
     { key: 'all', label: 'すべて' },
     { key: 'beauty', label: '美容' },
     { key: 'food', label: '飲食' },
+    { key: 'fitness', label: 'フィットネス' },
     { key: 'business', label: 'ビジネス' },
-    { key: 'info', label: 'インフォグラフィック' },
-    { key: 'bousai', label: '防災' },
 ];
 
 /**
- * 画像プレビューモーダル
+ * LPプレビューモーダル
  */
-function ImagePreviewModal({ item, onClose }: { item: GalleryItem; onClose: () => void }) {
+function LPPreviewModal({ item, onClose }: { item: GalleryItem; onClose: () => void }) {
     return (
         <div
             className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/60 backdrop-blur-sm"
@@ -66,7 +65,7 @@ function ImagePreviewModal({ item, onClose }: { item: GalleryItem; onClose: () =
                         to="/contact"
                         className="btn-primary text-sm w-full"
                     >
-                        このデザインについて相談する
+                        このテンプレートで相談する
                     </Link>
                 </div>
             </div>
@@ -75,17 +74,17 @@ function ImagePreviewModal({ item, onClose }: { item: GalleryItem; onClose: () =
 }
 
 /**
- * 画像ギャラリーページ
+ * LPギャラリーページ
  * カテゴリフィルター + カードグリッド + クリックでモーダル表示
  */
-export default function ImageGalleryPage() {
-    usePageTitle('AI画像テンプレート | 岡山の店舗向けSNS画像・バナー制作');
+export default function LPGalleryPage() {
+    usePageTitle('LPテンプレート | 岡山の店舗向けランディングページ制作');
     const [activeCategory, setActiveCategory] = useState<'all' | GalleryCategory>('all');
     const [previewItem, setPreviewItem] = useState<GalleryItem | null>(null);
 
     const filteredItems = useMemo(() => {
-        if (activeCategory === 'all') return imageItems;
-        return imageItems.filter((item) => item.category === activeCategory);
+        if (activeCategory === 'all') return lpItems;
+        return lpItems.filter((item) => item.category === activeCategory);
     }, [activeCategory]);
 
     return (
@@ -93,15 +92,15 @@ export default function ImageGalleryPage() {
             <div className="section-container">
                 {/* ページヘッダー */}
                 <div className="text-center mb-10">
-                    <h1 className="section-title">画像ギャラリー</h1>
+                    <h1 className="section-title">LPギャラリー</h1>
                     <p className="section-subtitle max-w-2xl mx-auto">
-                        AIで生成したデザインテンプレート。すべてあなたのビジネスに合わせてカスタマイズできます。
+                        業種に合わせたランディングページテンプレート。すべてカスタマイズ可能です。
                     </p>
                 </div>
 
                 {/* カテゴリフィルター */}
                 <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10">
-                    {IMAGE_CATEGORIES.map((cat) => (
+                    {LP_CATEGORIES.map((cat) => (
                         <button
                             key={cat.key}
                             onClick={() => setActiveCategory(cat.key)}
@@ -178,7 +177,7 @@ export default function ImageGalleryPage() {
                                         setPreviewItem(item);
                                     }}
                                 >
-                                    プレビューを見る
+                                    このテンプレートで相談する
                                 </button>
                             </div>
                         </article>
@@ -194,7 +193,7 @@ export default function ImageGalleryPage() {
 
             {/* プレビューモーダル */}
             {previewItem && (
-                <ImagePreviewModal
+                <LPPreviewModal
                     item={previewItem}
                     onClose={() => setPreviewItem(null)}
                 />

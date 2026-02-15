@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import ImageGalleryPage from './pages/ImageGalleryPage';
 import VideoGalleryPage from './pages/VideoGalleryPage';
+import LPGalleryPage from './pages/LPGalleryPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/gallery/images" element={<ImageGalleryPage />} />
           <Route path="/gallery/videos" element={<VideoGalleryPage />} />
+          <Route path="/gallery/lp" element={<LPGalleryPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Route>

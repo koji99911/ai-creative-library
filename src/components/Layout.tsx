@@ -12,6 +12,7 @@ export default function Layout() {
         { to: '/', label: 'ホーム' },
         { to: '/gallery/images', label: '画像ギャラリー' },
         { to: '/gallery/videos', label: '動画ギャラリー' },
+        { to: '/gallery/lp', label: 'LPギャラリー' },
         { to: '/services', label: 'サービス・料金' },
         { to: '/contact', label: 'お問い合わせ' },
     ];
